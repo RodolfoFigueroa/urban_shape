@@ -31,7 +31,7 @@ def denue(path_resource: PathResource) -> gpd.GeoDataFrame:
 def denue_split(context: dg.AssetExecutionContext, path_resource: PathResource, denue_base: gpd.GeoDataFrame)-> gpd.GeoDataFrame:
     fpath = Path(path_resource.population_grids_path) / "final" / "zone_agebs" / "shaped" / "2020" / f"{context.partition_key}.gpkg"
     fpath = str(fpath).replace("az://", "/vsiaz/")
-    print(fpath)
+
     with gdal_azure_session(path=fpath):
         df_agebs = gpd.read_file(fpath).to_crs("EPSG:6372")
 
