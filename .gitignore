@@ -218,3 +218,4 @@ __marimo__/
 # Extra
 dagster/
 *.gpkg
+/.tmp_dagster_home_lbvttt__
