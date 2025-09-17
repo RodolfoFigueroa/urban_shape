@@ -1,8 +1,3 @@
-from urban_shape.assets import polygons, denue, points, scian
+from urban_shape.assets import denue, points, polygons, scian
 
-__all__ = [
-    "polygons",
-    "denue",
-    "points",
-    "scian"
-]
+__all__ = ["denue", "points", "polygons", "scian"]

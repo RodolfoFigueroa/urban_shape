@@ -1,8 +1,9 @@
+from pathlib import Path
+
 import dagster as dg
 import geopandas as gpd
 import pandas as pd
 
-from pathlib import Path
 from urban_shape.resources import PathResource
 
 

@@ -2,8 +2,11 @@ import dagster as dg
 
 from urban_shape import assets
 from urban_shape.managers import DataFrameManager, GeoDataFrameManager
-from urban_shape.resources import ClusterConfigResource, MedoidConfigResource, PathResource
-
+from urban_shape.resources import (
+    ClusterConfigResource,
+    MedoidConfigResource,
+    PathResource,
+)
 
 # Resources
 coarse_config_resource = ClusterConfigResource(
@@ -18,13 +21,9 @@ fine_config_resource = ClusterConfigResource(
     min_cluster_size=100,
 )
 
-coarse_medoid_config_resource = MedoidConfigResource(
-    n_clusters=4
-)
+coarse_medoid_config_resource = MedoidConfigResource(n_clusters=4)
 
-fine_medoid_config_resource = MedoidConfigResource(
-    n_clusters=6
-)
+fine_medoid_config_resource = MedoidConfigResource(n_clusters=6)
 
 path_resource = PathResource(
     jobs_path=dg.EnvVar("JOBS_PATH"),
@@ -38,7 +37,6 @@ path_resource = PathResource(
 dataframe_manager = DataFrameManager(
     extension=".csv",
     path_resource=path_resource,
-
 )
 
 geodataframe_manager = GeoDataFrameManager(
@@ -49,7 +47,9 @@ geodataframe_manager = GeoDataFrameManager(
 
 # Definitions
 defs = dg.Definitions(
-    assets=dg.load_assets_from_modules([assets.polygons, assets.denue, assets.points, assets.scian]),
+    assets=dg.load_assets_from_modules(
+        [assets.polygons, assets.denue, assets.points, assets.scian],
+    ),
     resources={
         "fine_config_resource": fine_config_resource,
         "coarse_config_resource": coarse_config_resource,
@@ -58,5 +58,5 @@ defs = dg.Definitions(
         "path_resource": path_resource,
         "dataframe_manager": dataframe_manager,
         "geodataframe_manager": geodataframe_manager,
-    }
+    },
 )
